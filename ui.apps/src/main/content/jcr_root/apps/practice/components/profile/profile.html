@@ -1,0 +1,98 @@
+<div data-emptytext="Employee Details" class="cq-placeholder"></div>
+
+<sly data-sly-use.profileDetails="com.adobe.aem.tutorial.core.models.Profile">
+  <sly data-sly-list.profileData="${profileDetails.profileData}">
+    <div class="cmp-profile__card">
+      <div class="cmp-profile__image-wrapper">
+        <img
+          class="cmp-profile__image"
+          src="${profileData.image}"
+          alt="${profileData.name}"
+        />
+      </div>
+      <div class="cmp-profile__info">
+        <h2 class="cmp-profile__name">${profileData.name}</h2>
+        <p class="cmp-profile__age">Age: ${profileData.age}</p>
+        <p class="cmp-profile__position">Position: ${profileData.position}</p>
+        <p class="cmp-profile__country">Country: ${profileData.country}</p>
+        <div class="cmp-profile__clubs">
+          <span>Clubs Played:</span>
+          <ul>
+            <sly data-sly-list.club="${profileData.clubsPlayed}">
+              <li>${club}</li>
+            </sly>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </sly>
+</sly>
+
+<style>
+  .cmp-profile__card {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    max-width: 600px;
+    margin: 20px auto;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .cmp-profile__card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  }
+
+  .cmp-profile__image-wrapper {
+    flex-shrink: 0;
+  }
+
+  .cmp-profile__image {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 50%; /* makes image round */
+    border: 4px solid #eee;
+  }
+
+  .cmp-profile__info {
+    flex: 1;
+  }
+
+  .cmp-profile__name {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin: 0 0 8px;
+    color: #333;
+  }
+
+  .cmp-profile__age,
+  .cmp-profile__position,
+  .cmp-profile__country {
+    margin: 4px 0;
+    color: #555;
+    font-size: 0.95rem;
+  }
+
+  .cmp-profile__clubs {
+    margin-top: 10px;
+  }
+
+  .cmp-profile__clubs span {
+    font-weight: 600;
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  .cmp-profile__clubs ul {
+    list-style: disc;
+    padding-left: 20px;
+    margin: 0;
+    color: #444;
+    font-size: 0.9rem;
+  }
+</style>

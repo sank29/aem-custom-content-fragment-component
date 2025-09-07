@@ -1,0 +1,35 @@
+<div class="my-button-component" data-current-resource="${resource.path}">
+  <h1 class="header">${properties.header}</h1>
+  <h3 class="title">${properties.title}</h3>
+  <button id="myButton" type="button" onclick="myButtonFunction('approve')">
+    ${properties.approvebuttonlabel}
+  </button>
+
+  <button id="myButton" type="button" onclick="myButtonFunction('reject')">
+    ${properties.rejectbuttonlabel}
+  </button>
+</div>
+<sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html">
+  <sly data-sly-call="${clientlib.all @ categories='aem.tutorials'}" />
+</sly>
+
+<script>
+  function myButtonFunction(status) {
+    const servletResource = $(".my-button-component").data("current-resource");
+    console.log(servletResource);
+    var settings = {
+      url: servletResource + ".buttoncomponent.html",
+      data: {
+        statusFlag: status,
+      },
+      method: "GET",
+    };
+    $.ajax(settings)
+      .done(function (response) {
+        console.log("Success");
+      })
+      .fail((response) => {
+        console.log("Failure");
+      });
+  }
+</script>
