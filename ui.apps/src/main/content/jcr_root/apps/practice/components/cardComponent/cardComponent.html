@@ -1,0 +1,62 @@
+<h1>This is our Card Component</h1>
+<div
+  data-sly-use.model="com.adobe.aem.tutorial.core.models.CardComponent"
+  class="cmp-cardComponent__cards-container"
+>
+  <sly data-sly-list.card="${model.listOfCardComponent}">
+    <div class="cmp-cardComponent__cards">
+      <img src="${card.imageLocation}" alt="dummy" />
+      <p class="cmp-articlelist__cards-title">
+        ${card.cardDescription @ context='html'}
+      </p>
+      <!-- <h2 class="cmp-articlelist__cards-title">${card.imageLocation}</h2> -->
+      <!-- <div class="cmp-articlelist__cards-btn-container">
+          <a href="${articleList.path}.html" class="cmp-articlelist__cards-btn">Explore</a>
+        </div> -->
+    </div>
+  </sly>
+</div>
+
+<style>
+  .cmp-cardComponent__cards-container {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  .cmp-cardComponent__cards {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    flex: 1 1 45%; /* each card takes ~45% width */
+    max-width: 48%; /* ensures 2 per row */
+    box-sizing: border-box;
+    background: #f5f5f5;
+    padding: 10px;
+    border-radius: 8px;
+  }
+
+  .cmp-cardComponent__cards > p {
+    color: black;
+  }
+
+  .cmp-articlelist__cards-btn {
+    padding: 15px 40px;
+    background-color: #5e7263;
+    color: white;
+    text-align: center;
+  }
+
+  .cmp-articlelist__cards-btn-container {
+    text-align: center;
+    margin: 20px 0px;
+  }
+
+  @media (max-width: 600px) {
+    .cmp-cardComponent__cards {
+      flex: 1 1 100%; /* card takes full width */
+      max-width: 100%;
+    }
+  }
+</style>

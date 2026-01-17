@@ -1,24 +1,53 @@
 <div>
+  <sly data-sly-test="${properties.title}" />
 
-<sly data-sly-test="${properties.title}">
+  <h2>Title Property goes here:</h2>
 
-<h2>Title Property goes here:</h2>
+  <p>${properties.title}</p>
 
-<p>${properties.title}</p>
+  <h1 class="first-component-texts">
+    Title of the page is: ${currentPage.title}
+  </h1>
 
-<h1 class="first-component-text">Title of the page is: ${currentPage.title}</h1>
+  <p data-sly-text="${currentPage.title}">This text wil be replaced.</p>
 
-<p data-sly-text="${currentPage.title}">This text wil be replaced.</p>
-
-<p data-sly-attribute.title=${currentPage.title}>Attributes are set for this element.</p>
-
+  <p data-sly-attribute.title="${currentPage.title}">
+    Attributes are set for this element.
+  </p>
 </div>
 
-<sly 
-		data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html"
->
+<button class="btn btn-primary">Bootstrap Button</button>
 
-<sly data-sly-call="${clientlib.css @ categories='aem.tutorials'}"
+<div class="dropdown">
+  <button
+    class="btn btn-primary dropdown-toggle"
+    type="button"
+    data-bs-toggle="dropdown"
+    aria-expanded="false"
+  >
+    Dropdown
+  </button>
+  <ul class="dropdown-menu">
+    <li><button class="dropdown-item" type="button">Dropdown item</button></li>
+    <li><button class="dropdown-item" type="button">Dropdown item</button></li>
+    <li><button class="dropdown-item" type="button">Dropdown item</button></li>
+  </ul>
+</div>
 
->
+<sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html" />
+<sly
+  data-sly-call="${clientlib.css @ categories='aem.tutorials.firstComponent'}"
+/>
 
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+/>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<div class="container mt-5">
+  <div class="alert alert-success" role="alert">
+    Bootstrap is working in AEM! 🎉
+  </div>
+</div>

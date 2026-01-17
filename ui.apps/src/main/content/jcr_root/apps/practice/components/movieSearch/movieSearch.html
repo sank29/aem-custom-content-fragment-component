@@ -1,0 +1,101 @@
+<div data-sly-use.myModel="com.adobe.aem.tutorial.core.models.MovieSearch">
+  <div
+    id="displayMovies"
+    data-my-value="${myModel.movieName @ context='attribute'}"
+    data-top-Padding="${myModel.topPadding}"
+    data-bottom-Padding="${myModel.bottomPadding}"
+    data-left-Padding="${myModel.leftPadding}"
+    data-right-Padding="${myModel.rightPadding}"
+    data-option="${myModel.option}"
+  ></div>
+</div>
+
+<script>
+  let displayMovies = document.getElementById("displayMovies");
+  let myValue = displayMovies.dataset.myValue.trim();
+  let topPadding = displayMovies.dataset.topPadding;
+  let bottomPadding = displayMovies.dataset.bottomPadding;
+  let leftPadding = displayMovies.dataset.leftPadding;
+  let rightPadding = displayMovies.dataset.rightPadding;
+
+  let displayMoviesMargin = displayMovies.dataset.option;
+
+  let getLink = (myValue) => {
+    let link = "http://www.omdbapi.com/?t=" + myValue + "&apikey=1d222791";
+    return link;
+  };
+
+  let getData = async (link) => {
+    let data = await fetch(link);
+    data = await data.json();
+    return data;
+  };
+
+  const displayMovieOnPage = async () => {
+    let data = await getData(getLink(myValue));
+
+    if (data.Response === "False") {
+      alert("Movie not found: " + myValue);
+      return;
+    }
+
+    let card = document.createElement("div");
+    card.setAttribute("class", "card hovernow");
+    card.style.paddingTop = topPadding + "%";
+    card.style.paddingBottom = bottomPadding + "%";
+    card.style.paddingLeft = leftPadding + "%";
+    card.style.paddingRight = rightPadding + "%";
+
+    let movieTitle = document.createElement("p");
+    movieTitle.textContent = "Title: " + data.Title;
+
+    let plot = document.createElement("p");
+    plot.textContent = "Plot: " + data.Plot;
+
+    let poster = document.createElement("img");
+    poster.src = data.Poster;
+    poster.alt = data.Title;
+
+    let released = document.createElement("p");
+    released.textContent = "Released: " + data.Released;
+
+    let year = document.createElement("p");
+    year.textContent = "Year: " + data.Year;
+
+    let imdbRating = document.createElement("p");
+    imdbRating.textContent = "IMDB Rating: " + data.imdbRating;
+
+    let genre = document.createElement("p");
+    genre.textContent = "Genre: " + data.Genre;
+
+    card.append(movieTitle, plot, poster, released, year, imdbRating, genre);
+
+    displayMovies.style.width = displayMoviesMargin;
+    console.log(displayMoviesMargin);
+    displayMovies.append(card);
+  };
+
+  displayMovieOnPage();
+</script>
+
+<style>
+  #displayMovies {
+    margin: auto;
+  }
+  .card {
+    border: 1px solid white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .hovernow {
+    box-shadow: 0 1px 2px rgba(211, 24, 24, 0.899);
+    transition: box-shadow 0.3s ease-in-out;
+  }
+
+  .hovernow:hover {
+    box-shadow: 0 5px 15px rgba(255, 255, 255, 0.8);
+  }
+</style>

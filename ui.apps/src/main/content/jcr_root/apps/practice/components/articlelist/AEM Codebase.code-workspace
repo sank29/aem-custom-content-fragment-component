@@ -1,0 +1,16 @@
+{
+  "folders": [
+	{
+		"path": "../../../../../../../../../../../../../../../AEM Codebase"
+	},
+	{
+		"path": "../../../../../../../../../../../Appointment-Booking-Application-Frontend"
+	},
+	{
+		"path": "../../../../../../../../../../../codebase/practice"
+	}
+],
+  "settings": {
+    "liveServer.settings.multiRootWorkspaceName": "Appointment-Booking-Application-Frontend"
+  }
+}

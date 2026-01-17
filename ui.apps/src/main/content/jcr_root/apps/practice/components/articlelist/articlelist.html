@@ -1,0 +1,50 @@
+<div class="cmp-articlelist">
+  <h1 class="cmp-articlelist__heading">This is article List.</h1>
+
+  <div
+    data-sly-use.model="com.adobe.aem.tutorial.core.models.ArticleListModel"
+    class="cmp-articlelist__cards-container"
+  >
+    <sly data-sly-list.articleList="${model.articleListDataBeansArray}">
+      <div class="cmp-articlelist__cards">
+        <h2 class="cmp-articlelist__cards-title">${articleList.title}</h2>
+        <div class="cmp-articlelist__cards-description">
+          ${articleList.description}
+        </div>
+        <div class="cmp-articlelist__cards-btn-container">
+          <a href="${articleList.path}.html" class="cmp-articlelist__cards-btn"
+            >Explore</a
+          >
+        </div>
+      </div>
+    </sly>
+  </div>
+</div>
+
+<style>
+  .cmp-articlelist__cards-container {
+    display: flex;
+    justify-content: space-evenly;
+  }
+
+  .cmp-articlelist__cards {
+    display: flex;
+
+    flex-direction: column;
+    padding: 10px;
+    width: 350px;
+    border: 1px solid black;
+  }
+
+  .cmp-articlelist__cards-btn {
+    padding: 15px 40px;
+    background-color: #5e7263;
+    color: white;
+    text-align: center;
+  }
+
+  .cmp-articlelist__cards-btn-container {
+    text-align: center;
+    margin: 20px 0px;
+  }
+</style>

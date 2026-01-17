@@ -1,0 +1,67 @@
+/* Completely borderless nav */
+.nav-tabs {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    border: none !important;
+}
+
+/* Each nav item fills space evenly */
+.nav-tabs .nav-item {
+    flex: 1 1 auto;
+    text-align: center;
+}
+
+/* Base link styles */
+.nav-tabs .nav-link {
+    border: none !important;
+    background: none;
+    color: #495057;
+    padding: 0.75rem 1rem;
+    position: relative;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+/* 🔵 Blue underline for active tab only */
+.nav-tabs .nav-link.active {
+    color: #0d6efd;
+}
+
+.nav-tabs .nav-link.active::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 25%;
+    width: 50%;
+    height: 3px;
+    background-color: #0d6efd;
+    border-radius: 2px;
+}
+
+/* Smooth hover color change */
+.nav-tabs .nav-link:hover {
+    color: #0d6efd;
+}
+
+div > h2 a{
+
+    color: blue;
+}
+
+.card-body {
+    position: relative;
+    text-align: center;
+    color: blue;
+}
+
+.tab-content {
+    position: absolute;
+    bottom: 80px;
+    left: 80px;
+    align-items: start;
+}
+
+.btn{
+    margin: auto;
+}

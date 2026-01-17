@@ -5,7 +5,6 @@ import java.util.HashMap;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
-import javax.jcr.RepositoryException;
 import javax.jcr.Session;
 
 import org.apache.sling.api.resource.Resource;

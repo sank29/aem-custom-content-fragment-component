@@ -1,29 +1,26 @@
 <div data-emptytext="Employee Deails" class="cq-placeholder"></div>
-<sly data-sly-use.employeeDetails="com.adobe.aem.tutorial.core.models.EmployeeDetails">
+<sly
+  data-sly-use.employeeDetails="com.adobe.aem.tutorial.core.models.EmployeeDetails"
+>
+  <div id="employeeDeails">
+    <h2>Employee Details:</h2>
 
-<div id="employeeDeails">
-  <h2>Employee Details:</h2>
-
-  <p class="name">Name of the employee: ${employeeDetails.name}</p>
-  <p>Age of the employee: ${employeeDetails.age}</p>
-  <p>Age of the employee: ${employeeDetails.phone}</p>
-  <p>Company of the employee: ${employeeDetails.company}</p>
-  <p>Designation of the employee: ${employeeDetails.designation}</p>
-
-</div>
-
+    <p class="name">Name of the employee: ${employeeDetails.name}</p>
+    <p>Age of the employee: ${employeeDetails.age}</p>
+    <p>Age of the employee: ${employeeDetails.phone}</p>
+    <p>Company of the employee: ${employeeDetails.company}</p>
+    <p>Designation of the employee: ${employeeDetails.designation}</p>
+  </div>
 </sly>
 
 <script>
+  let employeeName = document.querySelector(".name");
 
-let employeeName = document.querySelector(".name");
+  if (employeeName) {
+    employeeName.addEventListener("click", function () {
+      alert("You have clicked on the name");
+    });
+  }
 
-if (employeeName) {
-  employeeName.addEventListener("click", function () {
-    alert("You have clicked on the name");
-  });
-}
-
-console.log("sanket");
-
+  console.log("sanket");
 </script>

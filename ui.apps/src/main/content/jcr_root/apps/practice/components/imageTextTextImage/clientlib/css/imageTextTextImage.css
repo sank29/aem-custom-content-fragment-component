@@ -1,0 +1,50 @@
+#mainContainer {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+}
+
+/* Cards equal width */
+.imageTextTextImage-card {
+    flex: 1;
+    max-width: 40rem;
+}
+
+.card-body-imageTextTextImage{
+    background-color: #066FEF;
+    padding: 10%;
+}
+
+.btn{
+    background-color: #066FEF;
+    color: white;
+    border: 2px solid white;
+    border-radius: 50px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.btn :hover{
+    background-color: #0142BD;
+}
+
+.fs-2{
+    color: white;
+}
+
+.fs-5 {
+    color: white;
+}
+
+
+
+@media (max-width: 767px) {
+    #mainContainer {
+        flex-direction: column;
+        /* stack vertically */
+    }
+
+    .imageTextTextImage-card {
+        max-width: 100%;
+    }
+}
